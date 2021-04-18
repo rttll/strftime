@@ -18,10 +18,16 @@ export default function Picker(props) {
   }
 
   return (
-    <div className='relative space-y-10'>
+    <div className='relative space-y-2 md:space-y-10'>
       <div className='flex text-3xl text-white md:text-6xl'>
-        {parts.map((part) => (
-          <span key={part.name}>
+        {parts.map((part, i) => (
+          <span
+            key={part.name}
+            className={
+              props.type === 'date' || part.name === 'Second'
+                ? 'pr-2 inline-block'
+                : ''
+            }>
             <Select
               optionClicked={handleOptionClick}
               data={part}

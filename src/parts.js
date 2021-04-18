@@ -8,7 +8,10 @@ const time = [
     name: 'Hour',
     selected: 'l',
     seperator: ':',
-    options: [{ code: 'l', label: getLabel('l') }],
+    options: [
+      { code: 'l', label: getLabel('l'), description: '0-12' },
+      { code: 'H', label: getLabel('H'), description: '00-23' },
+    ],
   },
   {
     name: 'Minute',
@@ -22,7 +25,7 @@ const time = [
     options: [{ code: 'S', label: getLabel('S') }],
   },
   {
-    name: 'thing',
+    name: 'Period',
     selected: 'P',
     options: [
       { code: 'P', label: getLabel('P') },
@@ -53,8 +56,8 @@ const date = [
     selected: 'e',
     seperator: ',',
     options: [
-      { code: 'd', label: getLabel('d') },
-      { code: 'e', label: getLabel('e') },
+      { code: 'd', label: getLabel('d'), description: '01-31' },
+      { code: 'e', label: getLabel('e'), description: '1-31' },
     ],
   },
   {
@@ -67,4 +70,5 @@ const date = [
   },
 ];
 
-export default { date, time };
+const parts = { date, time };
+export default parts;
