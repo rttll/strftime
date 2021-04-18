@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import Select from './Select';
-import partsData from '../parts';
 import Readout from './Readout';
 
-export default function Picker() {
+export default function Picker(props) {
   const [open, setOpen] = useState('');
-  const [parts, setParts] = useState(partsData);
+  const [parts, setParts] = useState(props.parts);
 
   function handleOptionClick(name, code) {
     setParts((current) => {
@@ -19,16 +18,23 @@ export default function Picker() {
   }
 
   return (
-    <div className='relative space-y-10'>
-      <div className='flex space-x-1 text-6xl text-white'>
-        {parts.map((part) => (
-          <Select
+    <div className='relative space-y-2 md:space-y-10'>
+      <div className='flex text-3xl text-white md:text-6xl'>
+        {parts.map((part, i) => (
+          <span
             key={part.name}
-            optionClicked={handleOptionClick}
-            data={part}
-            open={open === part.name}
-            openMe={handleOpenMe}
-          />
+            className={
+              props.type === 'date' || part.name === 'Second'
+                ? 'pr-2 inline-block'
+                : ''
+            }>
+            <Select
+              optionClicked={handleOptionClick}
+              data={part}
+              open={open === part.name}
+              openMe={handleOpenMe}
+            />
+          </span>
         ))}
       </div>
       <Readout parts={parts} />

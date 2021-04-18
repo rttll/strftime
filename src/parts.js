@@ -3,8 +3,38 @@ import strftime from 'strftime';
 function getLabel(code) {
   return strftime(`%${code}`, new Date());
 }
+const time = [
+  {
+    name: 'Hour',
+    selected: 'l',
+    seperator: ':',
+    options: [
+      { code: 'l', label: getLabel('l'), description: '0-12' },
+      { code: 'H', label: getLabel('H'), description: '00-23' },
+    ],
+  },
+  {
+    name: 'Minute',
+    selected: 'M',
+    seperator: ':',
+    options: [{ code: 'M', label: getLabel('M') }],
+  },
+  {
+    name: 'Second',
+    selected: 'S',
+    options: [{ code: 'S', label: getLabel('S') }],
+  },
+  {
+    name: 'Period',
+    selected: 'P',
+    options: [
+      { code: 'P', label: getLabel('P') },
+      { code: 'p', label: getLabel('p') },
+    ],
+  },
+];
 
-export default [
+const date = [
   {
     name: 'DayName',
     selected: 'A',
@@ -26,8 +56,8 @@ export default [
     selected: 'e',
     seperator: ',',
     options: [
-      { code: 'd', label: getLabel('d') },
-      { code: 'e', label: getLabel('e') },
+      { code: 'd', label: getLabel('d'), description: '01-31' },
+      { code: 'e', label: getLabel('e'), description: '1-31' },
     ],
   },
   {
@@ -39,3 +69,6 @@ export default [
     ],
   },
 ];
+
+const parts = { date, time };
+export default parts;

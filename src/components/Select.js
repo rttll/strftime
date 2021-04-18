@@ -17,8 +17,13 @@ export default function Select(props) {
               }}
               key={option.code}
               data-code={option.code}
-              className='block cursor-pointer'>
-              {option.label}
+              className='flex items-baseline cursor-pointer'>
+              <span>{option.label}</span>
+              {option.description && (
+                <span className='inline-block pl-1 text-xs whitespace-nowrap'>
+                  {option.description}
+                </span>
+              )}
             </span>
           ))}
         </div>
@@ -28,7 +33,7 @@ export default function Select(props) {
           props.openMe(props.data.name);
         }}
         data-name={props.data.name}
-        className='inline-block p-1 transition-colors border border-white border-opacity-0 cursor-pointer hover:border-opacity-100'>
+        className={`inline-block transition-colors hover:text-gray-700 cursor-pointer`}>
         {
           props.data.options.filter(
             (option) => option.code === props.data.selected
