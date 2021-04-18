@@ -17,7 +17,7 @@ export default function Select(props) {
     document.addEventListener('click', (e) => {
       closeSelectOnDocumentClick.bind(this, props, select.current)(e);
     });
-  }, []);
+  }, [props]);
 
   function optionClicked(name, code) {
     console.log('clicky');
@@ -63,7 +63,6 @@ export default function Select(props) {
             (option) => option.code === props.data.selected
           )[0].label
         }
-        {props.data.seperator && `${props.data.seperator}`}
       </span>
     </div>
   );

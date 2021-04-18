@@ -1,7 +1,8 @@
-const dateFormats = {
-  full: ['DayName ', 'Month ', 'Day', ', ', 'Year'],
-  slashes: ['Month', '/', 'Day', '/', 'Year'],
-  dashes: ['Month', '-', 'Day', '-', 'Year'],
-};
+const dateFormats = [
+  ['DayName ', 'Month ', 'Day', ', ', 'Year'],
+  ['Month', '/', 'Day', '/', 'Year'],
+  ['Month', '-', 'Day', '-', 'Year'],
+];
 
-export { dateFormats };
+const timeFormats = [['Hour', ':', 'Minute', ':', 'Second ', 'Period']];
+export { dateFormats, timeFormats };
