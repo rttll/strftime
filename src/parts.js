@@ -7,7 +7,6 @@ const time = [
   {
     name: 'Hour',
     selected: 'l',
-    seperator: ':',
     options: [
       { code: 'l', label: getLabel('l'), description: '0-12' },
       { code: 'H', label: getLabel('H'), description: '00-23' },
@@ -16,7 +15,6 @@ const time = [
   {
     name: 'Minute',
     selected: 'M',
-    seperator: ':',
     options: [{ code: 'M', label: getLabel('M') }],
   },
   {
@@ -54,7 +52,6 @@ const date = [
   {
     name: 'Day',
     selected: 'e',
-    seperator: ',',
     options: [
       { code: 'd', label: getLabel('d'), description: '01-31' },
       { code: 'e', label: getLabel('e'), description: '1-31' },

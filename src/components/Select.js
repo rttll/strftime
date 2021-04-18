@@ -1,11 +1,35 @@
+import { useEffect, useRef } from 'react';
+
 export default function Select(props) {
+  const select = useRef(null);
+  useEffect(() => {
+    const closeSelectOnDocumentClick = (props, select, event) => {
+      if (select) {
+        const open = select.dataset.open === 'true';
+        const selectWasClicked = event.path.includes(select);
+
+        // Usefully, this will also close if Select from another SelectGroup is opened
+        if (open && !selectWasClicked) {
+          props.toggleMe(false);
+        }
+      }
+    };
+    document.addEventListener('click', (e) => {
+      closeSelectOnDocumentClick.bind(this, props, select.current)(e);
+    });
+  }, [props]);
+
   function optionClicked(name, code) {
+    console.log('clicky');
     props.optionClicked(name, code);
-    props.openMe('');
+    props.toggleMe(false);
   }
 
   return (
-    <div className='relative'>
+    <div
+      className={`relative ${props.spaceAfter ? 'pr-2' : ''}`}
+      ref={select}
+      data-open={props.open}>
       {props.open && (
         <div
           style={{ top: '50%' }}
@@ -18,7 +42,7 @@ export default function Select(props) {
               key={option.code}
               data-code={option.code}
               className='flex items-baseline cursor-pointer'>
-              <span>{option.label}</span>
+              <span className='text-6xl'>{option.label}</span>
               {option.description && (
                 <span className='inline-block pl-1 text-xs whitespace-nowrap'>
                   {option.description}
@@ -30,16 +54,15 @@ export default function Select(props) {
       )}
       <span
         onClick={() => {
-          props.openMe(props.data.name);
+          props.toggleMe(props.data.name);
         }}
         data-name={props.data.name}
-        className={`inline-block transition-colors hover:text-gray-700 cursor-pointer`}>
+        className={`text-5xl text-white md:text-6xl inline-block transition-colors hover:text-gray-700 cursor-pointer`}>
         {
           props.data.options.filter(
             (option) => option.code === props.data.selected
           )[0].label
         }
-        {props.data.seperator && `${props.data.seperator}`}
       </span>
     </div>
   );
