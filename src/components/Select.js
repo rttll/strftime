@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import Selector from './icons/Selector';
 export default function Select(props) {
   const select = useRef(null);
   useEffect(() => {
@@ -40,9 +39,6 @@ export default function Select(props) {
             (option) => option.code === props.data.selected
           )[0].label
         }
-        {/* <span className='w-6 h-6 text-blue-400 transition-opacity transform bg-white border border-blue-400 rounded-full opacity-20 group-hover:opacity-100'>
-          <Selector />
-        </span> */}
       </button>
       {props.open && (
         <div
