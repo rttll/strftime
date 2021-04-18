@@ -1,6 +1,4 @@
 export default function Select(props) {
-  // console.log(props);
-
   function optionClicked(name, code) {
     props.optionClicked(name, code);
     props.openMe('');
@@ -30,12 +28,13 @@ export default function Select(props) {
           props.openMe(props.data.name);
         }}
         data-name={props.data.name}
-        className='inline-block p-3 transition-colors border border-white border-opacity-0 cursor-pointer hover:border-opacity-100'>
+        className='inline-block p-1 transition-colors border border-white border-opacity-0 cursor-pointer hover:border-opacity-100'>
         {
           props.data.options.filter(
             (option) => option.code === props.data.selected
           )[0].label
         }
+        {props.data.seperator && `${props.data.seperator}`}
       </span>
     </div>
   );
