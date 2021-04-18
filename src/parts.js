@@ -24,6 +24,7 @@ export default [
   {
     name: 'Day',
     selected: 'e',
+    seperator: ',',
     options: [
       { code: 'd', label: getLabel('d') },
       { code: 'e', label: getLabel('e') },

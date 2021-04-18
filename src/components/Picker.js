@@ -20,7 +20,7 @@ export default function Picker() {
 
   return (
     <div className='relative space-y-10'>
-      <div className='flex space-x-4 text-6xl text-white'>
+      <div className='flex space-x-1 text-6xl text-white'>
         {parts.map((part) => (
           <Select
             key={part.name}
@@ -30,7 +30,6 @@ export default function Picker() {
             openMe={handleOpenMe}
           />
         ))}
-        {/* <span>April 17, 2021 9:54 PM</span> */}
       </div>
       <Readout parts={parts} />
     </div>
