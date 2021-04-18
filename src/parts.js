@@ -47,6 +47,7 @@ const date = [
     options: [
       { code: 'B', label: getLabel('B') },
       { code: 'b', label: getLabel('b') },
+      { code: 'm', label: getLabel('m') },
     ],
   },
   {

@@ -19,7 +19,7 @@ export default function Readout(props) {
     <div className='flex items-center justify-between w-full text-3xl bg-white rounded-lg outline-none'>
       <div className='flex pl-4 space-x-2'>{message}</div>
       <Copy message={message}>
-        <span className='block p-4 transition-colors rounded-tr-lg rounded-br-lg cursor-pointer hover:bg-pink-200'>
+        <span className='block p-4 transition-colors rounded-tr-lg rounded-br-lg cursor-pointer hover:text-blue-400'>
           <CopyIcon />
         </span>
       </Copy>
