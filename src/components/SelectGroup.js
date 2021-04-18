@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Select from './Select';
 import Readout from './Readout';
 
-export default function Picker(props) {
+export default function SelectGroup(props) {
   const [open, setOpen] = useState('');
   const [parts, setParts] = useState(props.parts);
 
@@ -13,7 +13,7 @@ export default function Picker(props) {
     });
   }
 
-  function handleOpenMe(name) {
+  function handletoggleMe(name) {
     setOpen(name);
   }
 
@@ -32,7 +32,7 @@ export default function Picker(props) {
               optionClicked={handleOptionClick}
               data={part}
               open={open === part.name}
-              openMe={handleOpenMe}
+              toggleMe={handletoggleMe}
             />
           </span>
         ))}

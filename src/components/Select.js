@@ -1,11 +1,31 @@
+import { useEffect, useRef } from 'react';
+
 export default function Select(props) {
+  const select = useRef(null);
+  useEffect(() => {
+    const closeSelectOnDocumentClick = (props, select, event) => {
+      if (select) {
+        const open = select.dataset.open === 'true';
+        const selectWasClicked = event.path.includes(select);
+
+        // Usefully, this will also close if Select from another SelectGroup is opened
+        if (open && !selectWasClicked) {
+          props.toggleMe(false);
+        }
+      }
+    };
+    document.addEventListener('click', (e) => {
+      closeSelectOnDocumentClick.bind(this, props, select.current)(e);
+    });
+  }, []);
+
   function optionClicked(name, code) {
     props.optionClicked(name, code);
-    props.openMe('');
+    props.toggleMe(false);
   }
 
   return (
-    <div className='relative'>
+    <div className='relative' ref={select} data-open={props.open}>
       {props.open && (
         <div
           style={{ top: '50%' }}
@@ -30,7 +50,7 @@ export default function Select(props) {
       )}
       <span
         onClick={() => {
-          props.openMe(props.data.name);
+          props.toggleMe(props.data.name);
         }}
         data-name={props.data.name}
         className={`inline-block transition-colors hover:text-gray-700 cursor-pointer`}>
