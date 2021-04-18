@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-
+import Selector from './icons/Selector';
 export default function Select(props) {
   const select = useRef(null);
   useEffect(() => {
@@ -20,7 +20,6 @@ export default function Select(props) {
   }, [props]);
 
   function optionClicked(name, code) {
-    console.log('clicky');
     props.optionClicked(name, code);
     props.toggleMe(false);
   }
@@ -30,6 +29,21 @@ export default function Select(props) {
       className={`relative ${props.spaceAfter ? 'pr-2' : ''}`}
       ref={select}
       data-open={props.open}>
+      <button
+        onClick={() => {
+          props.toggleMe(props.data.name);
+        }}
+        data-name={props.data.name}
+        className={`group flex items-center space-x-1 relative text-5xl text-white md:text-6xl transition-colors cursor-pointer`}>
+        {
+          props.data.options.filter(
+            (option) => option.code === props.data.selected
+          )[0].label
+        }
+        {/* <span className='w-6 h-6 text-blue-400 transition-opacity transform bg-white border border-blue-400 rounded-full opacity-20 group-hover:opacity-100'>
+          <Selector />
+        </span> */}
+      </button>
       {props.open && (
         <div
           style={{ top: '50%' }}
@@ -52,18 +66,6 @@ export default function Select(props) {
           ))}
         </div>
       )}
-      <span
-        onClick={() => {
-          props.toggleMe(props.data.name);
-        }}
-        data-name={props.data.name}
-        className={`text-5xl text-white md:text-6xl inline-block transition-colors hover:text-gray-700 cursor-pointer`}>
-        {
-          props.data.options.filter(
-            (option) => option.code === props.data.selected
-          )[0].label
-        }
-      </span>
     </div>
   );
 }

@@ -31,7 +31,7 @@ export default function SelectGroup(props) {
         {props.formats.length > 1 && (
           // Don't show toggle if there's only one format option. e.g. Time
           <span
-            className='flex items-center justify-center w-12 h-12 text-white transition-colors rounded-full cursor-pointer hover:text-blue-600 hover:bg-white'
+            className='flex items-center justify-center w-12 h-12 text-white transition-colors rounded-full cursor-pointer hover:text-blue-400 hover:bg-white'
             onClick={rotateFormat}>
             <SwitchVertical />
           </span>
