@@ -1,6 +1,4 @@
 export default function Select(props) {
-  // console.log(props);
-
   function optionClicked(name, code) {
     props.optionClicked(name, code);
     props.openMe('');

@@ -1,5 +1,3 @@
-// import { Scroll, Frame } from 'framer';
-
 import { useState } from 'react';
 import Select from './Select';
 import partsData from '../parts';
@@ -17,7 +15,6 @@ export default function Picker() {
   }
 
   function handleOpenMe(name) {
-    // console.log('open', name);
     setOpen(name);
   }
 
