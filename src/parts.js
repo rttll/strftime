@@ -54,7 +54,6 @@ const date = [
   {
     name: 'Day',
     selected: 'e',
-    seperator: ',',
     options: [
       { code: 'd', label: getLabel('d'), description: '01-31' },
       { code: 'e', label: getLabel('e'), description: '1-31' },

@@ -20,12 +20,16 @@ export default function Select(props) {
   }, []);
 
   function optionClicked(name, code) {
+    console.log('clicky');
     props.optionClicked(name, code);
     props.toggleMe(false);
   }
 
   return (
-    <div className='relative' ref={select} data-open={props.open}>
+    <div
+      className={`relative ${props.spaceAfter ? 'pr-2' : ''}`}
+      ref={select}
+      data-open={props.open}>
       {props.open && (
         <div
           style={{ top: '50%' }}
