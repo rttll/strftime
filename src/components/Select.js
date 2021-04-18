@@ -42,7 +42,7 @@ export default function Select(props) {
               key={option.code}
               data-code={option.code}
               className='flex items-baseline cursor-pointer'>
-              <span>{option.label}</span>
+              <span className='text-6xl'>{option.label}</span>
               {option.description && (
                 <span className='inline-block pl-1 text-xs whitespace-nowrap'>
                   {option.description}
@@ -57,7 +57,7 @@ export default function Select(props) {
           props.toggleMe(props.data.name);
         }}
         data-name={props.data.name}
-        className={`inline-block transition-colors hover:text-gray-700 cursor-pointer`}>
+        className={`text-5xl text-white md:text-6xl inline-block transition-colors hover:text-gray-700 cursor-pointer`}>
         {
           props.data.options.filter(
             (option) => option.code === props.data.selected

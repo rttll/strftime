@@ -26,15 +26,17 @@ export default function SelectGroup(props) {
   }
 
   return (
-    <div className='relative space-y-2 md:space-y-10'>
-      <div className='flex'>
+    <div className={`relative space-y-2 md:space-y-6 ${props.className}`}>
+      <div className='flex items-center space-x-2'>
         {props.formats.length > 1 && (
           // Don't show toggle if there's only one format option. e.g. Time
-          <span className='p-4 text-white' onClick={rotateFormat}>
+          <span
+            className='flex items-center justify-center w-12 h-12 text-white transition-colors rounded-full cursor-pointer hover:text-blue-600 hover:bg-white'
+            onClick={rotateFormat}>
             <SwitchVertical />
           </span>
         )}
-        <div className='flex text-3xl text-white md:text-6xl'>
+        <div className='flex'>
           {props.formats &&
             props.formats[activeFormatIndex].map((partOrPunctuation, i) => {
               const datePart = parts.filter(
@@ -54,7 +56,9 @@ export default function SelectGroup(props) {
               ) : (
                 <span
                   key={`${punctuationMark}-${i}`}
-                  className={spaceAfter ? 'inline-block pr-2' : ''}>
+                  className={`text-5xl text-white md:text-6xl ${
+                    spaceAfter ? 'inline-block pr-2' : ''
+                  }`}>
                   {punctuationMark}
                 </span>
               );
