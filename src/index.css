@@ -7,3 +7,24 @@ body {
   padding: 0;
   margin: 0;
 }
+
+button.Select:after {
+  content: '';
+  background: rgb(96, 165, 250);
+  border: 1px solid #fff;
+  border-radius: 8px;
+  box-shadow: 1px 1px 2px 1px rgb(0, 0, 0, 0.2);
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  bottom: -10px;
+  left: -10px;
+  z-index: 5;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+button.Select:hover:after {
+  opacity: 0.5;
+}
