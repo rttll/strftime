@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+
 export default function Select(props) {
   const select = useRef(null);
   useEffect(() => {
@@ -33,12 +34,14 @@ export default function Select(props) {
           props.toggleMe(props.data.name);
         }}
         data-name={props.data.name}
-        className={`group flex items-center space-x-1 relative text-5xl text-white md:text-6xl transition-colors cursor-pointer`}>
-        {
-          props.data.options.filter(
-            (option) => option.code === props.data.selected
-          )[0].label
-        }
+        className={`Select group flex items-center space-x-1 relative text-5xl text-white md:text-6xl transition-colors cursor-pointer`}>
+        <span className='relative z-10'>
+          {
+            props.data.options.filter(
+              (option) => option.code === props.data.selected
+            )[0].label
+          }
+        </span>
       </button>
       {props.open && (
         <div
