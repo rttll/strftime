@@ -6,12 +6,14 @@ export default function Readout(props) {
   const [message, setMessage] = useState(null);
   useEffect(() => {
     const format = props.formats[props.activeFormatIndex];
-    const data = format.map((partOrPunctuation) => {
+    const data = format.map((format) => {
       const datePart = props.parts.filter(
-        (part) => part.name === partOrPunctuation.replace(' ', '')
+        (part) => part.name === format.datePart
       )[0];
-      const after = partOrPunctuation.includes(' ') ? ' ' : '';
-      return datePart ? `%${datePart.selected}${after}` : partOrPunctuation;
+      const after = format.spaceAfter ? ' ' : '';
+      return datePart
+        ? `%${datePart.selected}${after}`
+        : `${format.punctuation}${after}`;
     });
     setMessage(data.map((text) => text).join(''));
   }, [props]);

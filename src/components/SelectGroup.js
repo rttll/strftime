@@ -33,28 +33,25 @@ export default function SelectGroup(props) {
         )}
         <div className='flex'>
           {props.formats &&
-            props.formats[activeFormatIndex].map((partOrPunctuation, i) => {
-              const datePart = parts.filter(
-                (part) => part.name === partOrPunctuation.replace(' ', '')
-              )[0];
-              const punctuationMark = datePart ? null : partOrPunctuation;
-              const spaceAfter = partOrPunctuation.includes(' ');
-              return datePart ? (
+            props.formats[activeFormatIndex].map((format, i) => {
+              return format.datePart ? (
                 <Select
-                  key={datePart.name}
+                  key={format.datePart}
                   optionClicked={handleOptionClick}
-                  data={datePart}
-                  spaceAfter={spaceAfter}
-                  open={open === datePart.name}
+                  data={
+                    parts.filter((part) => part.name === format.datePart)[0]
+                  }
+                  spaceAfter={format.spaceAfter}
+                  open={open === format.datePart}
                   toggleMe={handletoggleMe}
                 />
               ) : (
                 <span
-                  key={`${punctuationMark}-${i}`}
+                  key={`${format.punctuation}-${i}`}
                   className={`text-5xl text-white md:text-6xl ${
-                    spaceAfter ? 'inline-block pr-2' : ''
+                    format.spaceAfter ? 'inline-block pr-2' : ''
                   }`}>
-                  {punctuationMark}
+                  {format.punctuation}
                 </span>
               );
             })}

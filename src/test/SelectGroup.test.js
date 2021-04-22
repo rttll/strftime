@@ -29,10 +29,8 @@ describe('SelectGroup', () => {
       );
     });
     const partNames = parts.date.map((part) => part.name);
-    const expectedDateParts = dateFormats[
-      activeFormatIndex
-    ].filter((partOrPunctuation) =>
-      partNames.includes(partOrPunctuation.replace(' ', ''))
+    const expectedDateParts = dateFormats[activeFormatIndex].filter((format) =>
+      partNames.includes(format.datePart)
     );
     const Selects = document.querySelectorAll('[data-select-test]');
     expect(Selects.length === expectedDateParts.length).toBe(true);
@@ -46,7 +44,9 @@ describe('SelectGroup', () => {
           container
         );
       });
-      const formatToggle = document.querySelector('[data-test-format-toggle]');
+      const formatToggle = document.querySelector(
+        '[data-test-vertical-switch-button]'
+      );
       expect(formatToggle).not.toBe(null);
     });
   });
@@ -58,7 +58,9 @@ describe('SelectGroup', () => {
           container
         );
       });
-      const formatToggle = document.querySelector('[data-test-format-toggle]');
+      const formatToggle = document.querySelector(
+        '[data-test-vertical-switch-button]'
+      );
       expect(formatToggle).toBe(null);
     });
   });
