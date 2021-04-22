@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Select from './Select';
 import Readout from './Readout';
-import SwitchVertical from './icons/SwitchVertical';
+import VerticalSwitchButton from './VerticalSwitchButton';
 
 export default function SelectGroup(props) {
   const [open, setOpen] = useState('');
@@ -29,13 +29,7 @@ export default function SelectGroup(props) {
     <div className={`relative space-y-2 md:space-y-6 ${props.className}`}>
       <div className='flex items-center space-x-2'>
         {props.formats.length > 1 && (
-          // Don't show toggle if there's only one format option. e.g. Time
-          <span
-            className='flex items-center justify-center w-12 h-12 text-white transition-colors rounded-full cursor-pointer hover:text-blue-400 hover:bg-white'
-            onClick={rotateFormat}
-            data-test-format-toggle>
-            <SwitchVertical />
-          </span>
+          <VerticalSwitchButton onClick={rotateFormat} />
         )}
         <div className='flex'>
           {props.formats &&
