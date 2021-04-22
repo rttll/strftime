@@ -28,7 +28,8 @@ export default function Select(props) {
     <div
       className={`relative ${props.spaceAfter ? 'pr-2' : ''}`}
       ref={select}
-      data-open={props.open}>
+      data-open={props.open}
+      data-select-test>
       <button
         onClick={() => {
           props.toggleMe(props.data.name);
